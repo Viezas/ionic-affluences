@@ -15,10 +15,7 @@
 
       <div id="container">
         <Nav />
-        <Description :descriptionPassed="description"/>
-        <Schedule :schedule="scheduleInfos"/>
-        <Cancel />
-        <!--<Map />-->
+        <CancelForm />
         <Footer />
       </div>
     </ion-content>
@@ -29,11 +26,8 @@
 import { IonContent, IonHeader, IonPage, IonTitle, IonToolbar } from '@ionic/vue';
 import { defineComponent } from 'vue';
 import Nav from '../components/_partials/nav.vue';
-import Description from '../components/description.vue';
-import Schedule from '../components/Reserv/schedule.vue';
-//import Map from '../components/map.vue';
-import Cancel from '../components/Cancel/cancelReservation.vue';
 import Footer from '../components/_partials/footer.vue';
+import CancelForm from '../components/Cancel/cancelForm.vue';
 
 export default defineComponent({
   name: 'Home',
@@ -49,23 +43,10 @@ export default defineComponent({
     IonPage,
     IonTitle,
     IonToolbar,
-    Description,
-    Footer,
     Nav,
-    Schedule,
-    //Map, 
-    Cancel
+    Footer,
+    CancelForm
   },
-
-  mounted(){
-    fetch('https://fakeaffluences.herokuapp.com/api/infos')
-    .then(response => response.json())
-    .then(data => {
-      console.log(data);
-      this.description = data.description
-      this.scheduleInfos = data.schedule
-    })
-  }
 });
 </script>
 
